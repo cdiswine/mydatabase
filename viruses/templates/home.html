@@ -1,0 +1,16 @@
+<div>
+    {% for virus in viruses %}
+        <div class="species">
+            <a href="{% url 'virus_detail' virus.id %}">
+                <h3>{{ virus.species|capfirst }}</h3>
+            </a>
+            <p>{{ virus.species }}</p>
+            {% if virus.family %}
+                <p>Family: {{ virus.family }}</p>
+            {% endif %}
+            <p class="hidden">{{ virus.sequence }}</p>
+        </div>
+
+    {% endfor %}
+
+</div>
