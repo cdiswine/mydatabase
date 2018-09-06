@@ -1,1 +1,162 @@
-<h3> This will be the viral dashboard! </h3>
+<html>
+<head>
+	<title>Virus Details</title>
+	<style>
+		#nav {			
+			top: 0;
+			left: 0;			
+			position: fixed;
+			width: 100%;
+		}
+		ul {
+			list-style-type: none;
+			margin: 0;
+			padding: 0;
+			overflow: hidden;
+			background-color: #333333;
+		}
+		li {
+			float: left;
+			display: block;
+			color: white;
+			text-align: center;			
+			text-decoration: none;
+		}
+		li a {
+			display: block;
+			color: white;
+			padding: 16px;			
+			text-decoration: none;
+		}		
+		li a:hover {
+			background-color: #111111;
+		}
+
+		main {
+			padding-top: 3em;
+		}
+		
+		table {
+			border-collapse: collapse;
+			width: 80%;
+			margin-left: 10%;
+		}
+		
+		th {
+			padding: 16px;
+			color: white;
+			background-color: #333333;
+			margin: 0;
+			border: 0;
+			text-align: center;
+		}
+		
+		td {
+			border-bottom: 1px solid black;
+			padding-top: 8px;
+			padding-bottom: 8px;
+			text-align: center;
+		}
+		
+		.navLink {
+			color: white;
+			padding: 8px;
+			text-decoration: none;
+			background-color: #333333;
+		}
+		
+		.navLink:hover {
+			background-color: #111111
+		}
+		
+		.falseLink {
+			color: white;
+			padding: 8px;
+			text-decoration: none;
+			background-color: #555555;
+		}
+		
+		.centerClass {
+			margin-top: 20px;
+			text-align: center;
+		}
+		
+		footer {
+			position: fixed;
+			bottom: 0;
+			left: 0;			
+			background-color: #333333;
+			color: white;
+			width: 100%;
+			text-align: center;
+			padding-top: 16px;
+			padding-bottom: 16px;
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<ul id="nav">
+			<li><a href="{% url 'home' %}">VirusDB</a></li>
+			<li><a href="{% url 'dashboard' id=1 %}">Dashboard</a></li>
+			<li><a href="{% url 'admin:index' %}">Admin</a><li>
+		</ul>
+	</header>
+	<main>
+		<h3 style="text-align: center">Virus Entry for ID {{virus.id}}</h3>
+		<table>
+			<tr>
+				<th>Virus ID</th>
+				<th>Order</th>
+				<th>Family</th>
+				<th>Subfamily</th>
+				<th>Genus</th>
+				<th>Species</th>
+				<th>Genome</th>
+				<th>Host</th>
+			</tr>
+			<tr>
+				<td>{{virus.id}}</td>
+				<td>{{virus.order}}</td>
+				<td>{{virus.family}}</td>
+				<td>{{virus.subfamily}}</td>
+				<td>{{virus.genus}}</td>
+				<td>{{virus.species}}</td>
+				<td>{{virus.genome}}</td>
+				<td>{{virus.host}}</td>
+			</tr>
+			<tr>
+				<td>{{virus.id}}</td>
+				<td>{{virus.order}}</td>
+				<td>{{virus.family}}</td>
+				<td>{{virus.subfamily}}</td>
+				<td>{{virus.genus}}</td>
+				<td>{{virus.species}}</td>
+				<td>{{virus.genome}}</td>
+				<td>{{virus.host}}</td>
+			</tr>
+			<tr>
+				<td>{{virus.id}}</td>
+				<td>{{virus.order}}</td>
+				<td>{{virus.family}}</td>
+				<td>{{virus.subfamily}}</td>
+				<td>{{virus.genus}}</td>
+				<td>{{virus.species}}</td>
+				<td>{{virus.genome}}</td>
+				<td>{{virus.host}}</td>
+			</tr>
+		</table>
+		<div class="centerClass">
+			{% if virus.id > 1 %}
+				<a class="navLink" href="{% url 'dashboard' id=prev %}">Previous</a>
+			{% else %}
+				<a class="falseLink" href="#" onclick="return false;">Previous</a>
+			{% endif %}
+			<a class="navLink" href="{% url 'dashboard' id=next %}">Next</a>
+		</div>
+	</main>
+	<footer>
+		<small>&copy; Copyright 2018, Capitol Diagnostic Informatics</small>
+	</footer>
+</body>
+</html>

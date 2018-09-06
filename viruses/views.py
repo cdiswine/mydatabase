@@ -8,21 +8,17 @@ def home(request):
     v = Virus.objects.all()
     #return HttpResponse('<p>home view</p>')
     return render(request, 'home.html', {'viruses': v})
-    
+
+
 
 def dashboard(request, id):
-    #return HttpResponse('<p>dashboard view</p>')
     try:
         virus = Virus.objects.get(id=id)
     except Virus.DoesNotExist:
         raise Http404('Virus not found')
-    #return render(request, 'dashboard.html', {'virus': virus}) 
-
-
-def burtin(request):
-	return render(request, 'burtin.html', {'Virus': Virus})
+    return render(request, 'dashboard.html', {'virus': virus, 'next': (int(id) + 1), 'prev': (int(id) - 1)})
 
 
 
+    #return HttpResponse('<p>dashboard view id:{}</p>'.format(id))
     #return render(request, 'virus_detail.html', {'Virus': Virus})
-
